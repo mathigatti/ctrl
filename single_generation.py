@@ -289,7 +289,7 @@ try:
     print('---------------------------------------')            
     print(tokens_generated_so_far)
     print()
-    with open(output_file,'w') as f:
+    with open(args.output_file,'w') as f:
       f.write(tokens_generated_so_far)
 
 except KeyboardInterrupt: #Exception as e:
