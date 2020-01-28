@@ -39,6 +39,9 @@ parser.add_argument('--print_once', action='store_true',
 parser.add_argument('--topn', type=int, default=0,
                                         help='print top-n candidates during generations; defaults to 0 which is no printing')
 
+parser.add_argument('--output_file', type=str, default='output.txt',
+                                        help='Output file')
+
 args = parser.parse_args()
 tf.random.set_random_seed(args.seed)
 os.environ['PYTHONHASHSEED'] = str(args.seed)
@@ -285,7 +288,8 @@ while True:
         print('---------------------------------------')            
         print(tokens_generated_so_far)
         print()
-          
+        with open(output_file,'w') as f:
+          f.write(tokens_generated_so_far)
 
     except KeyboardInterrupt: #Exception as e:
         print('Continuing')
