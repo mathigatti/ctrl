@@ -4,6 +4,7 @@ import tensorflow as tf
 import os
 import numpy as np
 tf.enable_eager_execution()
+import time
 import transformer
 import argparse
 import pdb
@@ -289,7 +290,9 @@ try:
     print('---------------------------------------')            
     print(tokens_generated_so_far)
     print()
-    with open(args.output_file,'w') as f:
+    timestr = time.strftime("%Y%m%d-%H%M%S")
+
+    with open(args.output_file.replace(".txt",timestr+".txt"),'w') as f:
       f.write(tokens_generated_so_far)
 
 except KeyboardInterrupt: #Exception as e:
