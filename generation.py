@@ -7,6 +7,7 @@ tf.enable_eager_execution()
 import transformer
 import argparse
 import pdb
+import time
 import sys
 import re
 from collections import Counter
@@ -288,7 +289,9 @@ while True:
         print('---------------------------------------')            
         print(tokens_generated_so_far)
         print()
-        with open(args.output_file,'w') as f:
+        timestr = time.strftime("%Y%m%d-%H%M%S")
+
+        with open(args.output_file.replace(".txt",timestr+".txt"),'w') as f:
           f.write(tokens_generated_so_far)
 
     except KeyboardInterrupt: #Exception as e:
